@@ -15,6 +15,9 @@ export const clipStore = defineStore({
 		async getClipboard() {
 			try {
 				const res = await axios.get("/clipboard");
+				if (res.data.length === 0) {
+					return autolog.log("剪贴板为空", autologOutTime);
+				}
 				this.clipListData = res.data;
 			} catch (error) {
 				console.log(error);
