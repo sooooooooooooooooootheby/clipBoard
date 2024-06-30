@@ -1,0 +1,48 @@
+@import "@/assets/sass/module.scss";
+
+.container {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	--color: #e1e1e1;
+	background-color: #f3f3f3;
+	background-image: linear-gradient(0deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%, transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%, transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%, transparent);
+	background-size: 55px 55px;
+
+	.switch {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: absolute;
+		bottom: 50px;
+		background-color: $green-color-1;
+		border-radius: 99px;
+		border: 2px solid $green-color-1;
+		box-shadow: 0 0 10px 1px rgba($color: #000000, $alpha: 0.3);
+
+		a {
+            text-decoration: none;
+            color: $white-color;
+			padding: 6px 15px;
+			border-radius: 99px;
+            transition: .4s;
+            position: relative;
+            z-index: 2;
+		}
+        .select {
+            color: $font-title-color;
+        }
+        .bg {
+            width: 80px;
+            height: 34px;
+            background-color: #FFFFFF;
+            border-radius: 99px;
+            position: absolute;
+            margin-right: 74px;
+            z-index: 1;
+        }
+	}
+}

@@ -5,7 +5,13 @@ const router = createRouter({
     routes: [
         {
             path: "/",
-            component: () => import("@/App.vue"),
+            name: "clip",
+            component: () => import("@/components/clip.vue"),
+        },
+        {
+            path: "/file",
+            name: "file",
+            component: () => import("@/components/file.vue"),
         },
     ],
 });
