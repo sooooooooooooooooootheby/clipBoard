@@ -1,0 +1,54 @@
+@import "./variables";
+
+@mixin button {
+	button {
+		// 清除默认样式
+		appearance: none;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+
+		width: 100px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border: 2px solid $green-color-1;
+		border-radius: 12px;
+		cursor: pointer;
+		svg, p {
+			margin: 2px;
+		}
+	}
+
+	.brand {
+		background-color: $green-color-1;
+		color: $white-color;
+		transition: 0.2s;
+	}
+	.brand:hover {
+		border: $green-color-2;
+		background-color: $green-color-2;
+	}
+
+	.alt {
+		background-color: $white-color;
+		color: $green-color-1;
+		transition: 0.2s;
+	}
+	.alt:hover {
+		border: 2px solid $green-color-2;
+		color: $white-color;
+		background-color: $green-color-1;
+	}
+
+	.redAlt {
+		border: 2px solid $red-color-1;
+		background-color: $white-color;
+		color: $red-color-1;
+		transition: 0.2s;
+	}
+	.redAlt:hover {
+		border: 2px solid $red-color-2;
+		color: $white-color;
+		background-color: $red-color-1;
+	}
+}
