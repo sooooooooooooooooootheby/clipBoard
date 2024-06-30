@@ -18,7 +18,7 @@
 					</svg>
 					<p>删除</p>
 				</button>
-				<button class="brand">
+				<button class="brand" @click="handleCopy">
 					<svg class="icon" aria-hidden="true">
 						<use xlink:href="#copy-1"></use>
 					</svg>
@@ -46,6 +46,7 @@
 import { clipStore } from "@/stores/clip.js";
 import clipList from "./clipList.vue";
 import { gsap } from "gsap";
+import autolog from "autolog.js";
 
 export default {
 	components: {
@@ -168,6 +169,17 @@ export default {
 			this.text = "";
 			this.handleTime();
 			this.id = "new";
+		},
+		// 复制
+		handleCopy() {
+			this.$copyText(this.text).then(
+				(e) => {
+					autolog.log("复制成功", "success", 2500);
+				},
+				function (e) {
+					autolog.log("复制失败", "error", 2500);
+				}
+			);
 		},
 	},
 	mounted() {
