@@ -7,7 +7,6 @@
 		-webkit-appearance: none;
 		-moz-appearance: none;
 
-		width: 100px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -25,7 +24,7 @@
 		transition: 0.2s;
 	}
 	.brand:hover {
-		border: $green-color-2;
+		border: 2px solid $green-color-2;
 		background-color: $green-color-2;
 	}
 
