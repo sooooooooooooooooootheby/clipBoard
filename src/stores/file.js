@@ -8,7 +8,7 @@ export const fileStore = defineStore({
 	store: () => {
 		return {
 			fileListData: [],
-            code: null,
+			state: false,
 		};
 	},
 	actions: {
@@ -24,16 +24,41 @@ export const fileStore = defineStore({
 				console.log(error);
 			}
 		},
-        // 删除指定的file
-        async deleteFile({ id }) {
+		// 删除指定的file
+		async deleteFile({ id }) {
 			try {
 				const res = await axios.delete(`/files/${id}`);
 				autolog.log("删除成功", "success", autologOutTime);
-                this.code = true;
+				this.state = true;
 			} catch (error) {
 				console.log(error);
 				autolog.log("删除失败", "error", autologOutTime);
 			}
+		},
+		downloadFile({ id, filename }) {
+			axios({
+				url: `http://47.100.101.113:8080/api/files/download/${id}`,
+				method: "get",
+				responseType: "blob",
+			})
+				.then((response) => {
+					let data = response.data;
+					if (!data) {
+						return console.log(1);
+					}
+					const url = window.URL.createObjectURL(new Blob([data]));
+					const link = document.createElement("a");
+					link.href = url;
+					link.setAttribute("download", filename);
+					document.body.appendChild(link);
+					link.click();
+					autolog.log("下载成功", "success", autologOutTime);
+					document.body.removeChild(link);
+					window.URL.revokeObjectURL(url);
+				})
+				.catch((error) => {
+					autolog.log("下载失败", "error", autologOutTime);
+				});
 		},
 	},
 });

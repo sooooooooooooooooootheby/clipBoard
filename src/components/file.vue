@@ -79,47 +79,31 @@ export default {
 
 			fetch("http://47.100.101.113:8080/api/files/upload", requestOptions)
 				.then((response) => response.text())
-				.then((result) => autolog.log("上传成功", "success", this.autologOutTime))
+				.then((result) => {
+					autolog.log("上传成功", "success", this.autologOutTime);
+					this.getFileList();
+				})
 				.catch((error) => autolog.log("上传失败", "error", this.autologOutTime));
 		},
 		// 删除指定的file
 		async deleteFile(id) {
 			try {
 				await this.handleFile.deleteFile({ id: id });
-				// for (let i = 0; i < this.listData.length; i++) {
-				// 	if (this.listData[i].id === id) {
-				// 		this.listData.splice(i, 1);
-				// 	}
-				// }
+				if (this.handleFile.state) {
+					for (let i = 0; i < this.listData.length; i++) {
+						if (this.listData[i].id === id) {
+							this.listData.splice(i, 1);
+						}
+					}
+				}
+				this.handleFile.state = false;
 			} catch (error) {
 				console.error(error);
 			}
 		},
 		// 下载文件
 		onDownload(id, filename) {
-			axios({
-				url: `http://47.100.101.113:8080/api/files/download/${id}`,
-				method: "get",
-				responseType: "blob",
-			})
-				.then((response) => {
-					// console.log(response.data);
-					let data = response.data;
-					if (!data) {
-						return console.log(1);
-					}
-					const url = window.URL.createObjectURL(new Blob([data]));
-					const link = document.createElement("a");
-					link.href = url;
-					link.setAttribute("download", filename);
-					document.body.appendChild(link);
-					link.click();
-					document.body.removeChild(link);
-					window.URL.revokeObjectURL(url);
-				})
-				.catch((error) => {
-					console.error("下载失败:", error);
-				});
+			this.handleFile.downloadFile({ id: id, filename: filename });
 		},
 		// 格式化时间
 		handleTime(time) {
