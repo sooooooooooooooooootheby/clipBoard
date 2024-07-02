@@ -8,8 +8,8 @@
 				<span>文件夹</span>
 			</span>
 			<div class="buttonNav">
-				<input type="file" id="upload" name="file" v-on:change="onFile" />
-				<label for="upload">
+				<input type="file" id="file" name="file" v-on:change="onFile" />
+				<label for="file">
 					<span class="brand">
 						<svg class="icon" aria-hidden="true">
 							<use xlink:href="#upload"></use>
