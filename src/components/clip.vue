@@ -29,15 +29,20 @@
 						<use xlink:href="#save"></use>
 					</svg>
 					<p>保存</p>
+				</button><button class="brand" @click="initialized">
+					<svg class="icon" aria-hidden="true">
+						<use xlink:href="#save"></use>
+					</svg>
+					<p>新clipBoard</p>
 				</button>
 			</div>
 		</div>
 		<div class="text">
-			<v-md-editor v-model="text" height="100%"></v-md-editor>
+			<v-md-editor v-model="content.text" height="100%"></v-md-editor>
 		</div>
 		<div class="state">
-			<div class="index">No.{{ id }}</div>
-			<span class="time">{{ time }}</span>
+			<div class="index">No.{{ content.id }}</div>
+			<span class="time">{{ content.time }}</span>
 		</div>
 	</div>
 </template>
@@ -57,9 +62,11 @@ export default {
 		return {
 			handleClip: clip,
 
-			text: "",
-			id: "new",
-			time: "",
+			content: {
+				text: "",
+				id: "new",
+				time: "",
+			},
 			isClipList: false,
 			data: null,
 
@@ -79,7 +86,7 @@ export default {
 		// 创建一个新的clipboard
 		async createClipboard() {
 			try {
-				await this.handleClip.createClipboard({ content: this.text });
+				await this.handleClip.createClipboard({ content: this.content.text });
 				this.initialized();
 			} catch (error) {
 				console.error(error);
@@ -88,7 +95,7 @@ export default {
 		// 更新clipboard
 		async updateClipboard() {
 			try {
-				await this.handleClip.updateClipboard({ id: this.id, content: this.text });
+				await this.handleClip.updateClipboard({ id: this.content.id, content: this.content.text });
 				this.initialized();
 			} catch (error) {
 				console.error(error);
@@ -97,7 +104,7 @@ export default {
 		// 删除clipboard
 		async deleteClipboard() {
 			try {
-				await this.handleClip.deleteClipboard({ id: this.id });
+				await this.handleClip.deleteClipboard({ id: this.content.id });
 				this.initialized();
 			} catch (error) {
 				console.error(error);
@@ -155,24 +162,24 @@ export default {
 			// 格式化后的时间字符串
 			const formattedDate = `${month} ${day}`;
 			const formattedTime = `${formattedHours}:${formattedMinutes} ${period}`;
-			this.time = `${formattedDate} ${formattedTime}`;
+			this.content.time = `${formattedDate} ${formattedTime}`;
 		},
 		handleDataChange(newValue) {
 			this.put = true;
-			this.id = newValue.id;
-			this.time = `${newValue.formattedDate} ${newValue.formattedTime}`;
-			this.text = newValue.content;
+			this.content.id = newValue.id;
+			this.content.time = `${newValue.formattedDate} ${newValue.formattedTime}`;
+			this.content.text = newValue.content;
 			this.showClipList();
 		},
 		initialized() {
 			this.put = false;
-			this.text = "";
+			this.content.text = "";
 			this.handleTime();
-			this.id = "new";
+			this.content.id = "new";
 		},
 		// 复制
 		handleCopy() {
-			this.$copyText(this.text).then(
+			this.$copyText(this.content.text).then(
 				(e) => {
 					autolog.log("复制成功", "success", 2500);
 				},
