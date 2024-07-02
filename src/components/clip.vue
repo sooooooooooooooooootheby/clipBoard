@@ -5,14 +5,14 @@
 	<div class="bg" @click="showClipList" v-if="isClipList"></div>
 	<div class="clip">
 		<div class="nav">
-			<span class="title" @click="showClipList">
+			<div class="title" @click="showClipList">
 				<svg class="icon" aria-hidden="true">
 					<use xlink:href="#bookmark"></use>
 				</svg>
-				剪贴板
-			</span>
-			<div class="buttonBox">
-				<button class="redAlt" v-if="put" @click="handleDel">
+				<span>剪贴板</span>
+			</div>
+			<div class="buttonNav">
+				<button class="warn" v-if="put" @click="handleDel">
 					<svg class="icon" aria-hidden="true">
 						<use xlink:href="#delete"></use>
 					</svg>

@@ -18,67 +18,134 @@
 
 .clip {
 	width: 900px;
-	padding: 20px;
-
+	min-height: 500px;
+	display: flex;
+	flex-direction: column;
 	.nav {
 		width: 100%;
-		margin-bottom: 20px;
+		height: 64px;
 		display: flex;
 		justify-content: space-between;
+		align-items: center;
 
 		.title {
-			color: $font-title-color;
-			font-size: 28px;
-			font-weight: bold;
+			display: flex;
+			align-items: center;
+			transition: 0.2s;
 			cursor: pointer;
-			transition: .2s;
+
+			svg,
+			span {
+				font-weight: bold;
+				font-size: 26px;
+				margin-right: 4px;
+			}
 		}
 		.title:hover {
 			color: $green-color-1;
 		}
-		.buttonBox {
+		.buttonNav {
 			display: flex;
-
 			@include button;
 			button {
-				margin-left: 20px;
+				margin-left: 8px;
 			}
 		}
 	}
-
 	.text {
-		width: 100%;
-		height: 400px;
-		background-color: $white-color;
-		border: 2px solid $green-color-1;
-		border-radius: 4px;
-		box-shadow: 0 0 10px 1px rgba($color: #000000, $alpha: 0.3);
+		flex-grow: 1;
+		.v-md-editor {
+			border: 2px solid $green-color-1;
+			border-radius: 12px;
+			box-shadow: 0 0 10px 1px rgba($color: #000000, $alpha: 0.3);
+		}
 	}
-
 	.state {
-		width: calc(100% - 20px);
-		padding: 10px;
-		margin-top: 20px;
-		background-color: $white-color;
+		width: calc(100% - 16px);
+		margin-top: 12px;
+		padding: 12px 8px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		background-color: $background-color;
 		border: 2px solid $green-color-1;
-		border-radius: 4px;
+		border-radius: 12px;
 		box-shadow: 0 0 10px 1px rgba($color: #000000, $alpha: 0.3);
 		.index {
-			display: flex;
-			align-items: center;
-			font-weight: bold;
-		}
-		.index::before {
-			display: block;
-			content: " ";
-			width: 12px;
-			height: 12px;
-			margin-right: 5px;
-			background-color: $green-color-1;
-			border-radius: 10px;
+			font-size: 18px;
+			color: $font-title-color;
+			line-height: 16px;
 		}
 		.time {
-			color: $font-subTime-color;
+			font-size: 14px;
+			color: $font-subTitle-color;
 		}
 	}
 }
+
+// .clip {
+// 	width: 900px;
+// 	padding: 20px;
+
+// 	.nav {
+// 		width: 100%;
+// 		margin-bottom: 20px;
+// 		display: flex;
+// 		justify-content: space-between;
+
+// 		.title {
+// 			color: $font-title-color;
+// 			font-size: 28px;
+// 			font-weight: bold;
+// 			cursor: pointer;
+// 			transition: .2s;
+// 		}
+// 		.title:hover {
+// 			color: $green-color-1;
+// 		}
+// 		.buttonNav {
+// 			display: flex;
+
+// 			@include button;
+// 			button {
+// 				margin-left: 20px;
+// 			}
+// 		}
+// 	}
+
+// 	.text {
+// 		width: 100%;
+// 		height: 400px;
+// 		background-color: $white-color;
+// 		border: 2px solid $green-color-1;
+// 		border-radius: 4px;
+// 		box-shadow: 0 0 10px 1px rgba($color: #000000, $alpha: 0.3);
+// 	}
+
+// 	.state {
+// 		width: calc(100% - 20px);
+// 		padding: 10px;
+// 		margin-top: 20px;
+// 		background-color: $white-color;
+// 		border: 2px solid $green-color-1;
+// 		border-radius: 4px;
+// 		box-shadow: 0 0 10px 1px rgba($color: #000000, $alpha: 0.3);
+// 		.index {
+// 			display: flex;
+// 			align-items: center;
+// 			font-weight: bold;
+// 		}
+// 		.index::before {
+// 			display: block;
+// 			content: " ";
+// 			width: 12px;
+// 			height: 12px;
+// 			margin-right: 5px;
+// 			background-color: $green-color-1;
+// 			border-radius: 10px;
+// 		}
+// 		.time {
+// 			color: $font-subTime-color;
+// 		}
+// 	}
+// }

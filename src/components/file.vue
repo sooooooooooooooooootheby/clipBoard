@@ -7,7 +7,7 @@
 				</svg>
 				文件夹
 			</span>
-			<div class="buttonBox">
+			<div class="buttonNav">
 				<input type="file" id="upload" name="file" v-on:change="onFile" />
 				<label for="upload">
 					<span>上传</span>
@@ -29,7 +29,6 @@
 						<span class="size">{{ item.fileSize }}</span>
 					</div>
 					<div class="buttonNav">
-						<!-- <a class="brand" :href="'/' + item.filePath" :download="item.fileName">下载</a> -->
 						<button @click="onDownload(item.id, item.fileName)">下载</button>
 						<button class="brand" @click="deleteFile(item.id)">删除</button>
 					</div>

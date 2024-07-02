@@ -24,25 +24,25 @@
 		box-shadow: 0 0 10px 1px rgba($color: #000000, $alpha: 0.3);
 
 		a {
-            text-decoration: none;
-            color: $white-color;
+			text-decoration: none;
+			color: #ffffff;
 			padding: 6px 15px;
 			border-radius: 99px;
-            transition: .4s;
-            position: relative;
-            z-index: 2;
+			transition: 0.4s;
+			position: relative;
+			z-index: 2;
 		}
-        .select {
-            color: $font-title-color;
-        }
-        .bg {
-            width: 80px;
-            height: 34px;
-            background-color: #FFFFFF;
-            border-radius: 99px;
-            position: absolute;
-            margin-right: 74px;
-            z-index: 1;
-        }
+		.select {
+			color: #3c3c43;
+		}
+		.bg {
+			width: 82px;
+			height: 36px;
+			background-color: #ffffff;
+			border-radius: 99px;
+			position: absolute;
+			margin-right: 74px;
+			z-index: 1;
+		}
 	}
 }

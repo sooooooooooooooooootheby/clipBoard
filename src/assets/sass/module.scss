@@ -7,47 +7,34 @@
 		-webkit-appearance: none;
 		-moz-appearance: none;
 
+		padding: 6px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		border: 2px solid $green-color-1;
 		border-radius: 12px;
 		cursor: pointer;
+		transition: .2s;
 		svg, p {
 			margin: 2px;
 		}
 	}
 
 	.brand {
+		border: 2px solid $green-color-1;
 		background-color: $green-color-1;
-		color: $white-color;
-		transition: 0.2s;
+		color: #FFFFFF;
 	}
 	.brand:hover {
 		border: 2px solid $green-color-2;
 		background-color: $green-color-2;
 	}
-
-	.alt {
-		background-color: $white-color;
-		color: $green-color-1;
-		transition: 0.2s;
-	}
-	.alt:hover {
-		border: 2px solid $green-color-2;
-		color: $white-color;
-		background-color: $green-color-1;
-	}
-
-	.redAlt {
+	.warn {
 		border: 2px solid $red-color-1;
-		background-color: $white-color;
-		color: $red-color-1;
-		transition: 0.2s;
-	}
-	.redAlt:hover {
-		border: 2px solid $red-color-2;
-		color: $white-color;
 		background-color: $red-color-1;
+		color: #FFFFFF;
+	}
+	.warn:hover {
+		border: 2px solid $red-color-2;
+		background-color: $red-color-2;
 	}
 }
