@@ -111,6 +111,9 @@ export default {
 			}
 		},
 		handleSave() {
+			if (this.content.text === "") {
+				return autolog.log("内容不能为空", "warn", 2500);
+			}
 			if (this.put) {
 				// 执行更新操作
 				return this.updateClipboard();
