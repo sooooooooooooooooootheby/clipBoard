@@ -1,7 +1,7 @@
 @import "./variables";
 
 @mixin button {
-	button {
+	button, span {
 		// 清除默认样式
 		appearance: none;
 		-webkit-appearance: none;
@@ -16,6 +16,7 @@
 		transition: .2s;
 		svg, p {
 			margin: 2px;
+			font-size: 13px;
 		}
 	}
 

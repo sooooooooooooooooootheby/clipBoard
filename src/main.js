@@ -1,5 +1,5 @@
 import "@/assets/sass/main.scss";
-import "//at.alicdn.com/t/c/font_4604269_vu4jc9j9p1.js";
+import "//at.alicdn.com/t/c/font_4604269_yqos6i1eu5.js";
 
 import { createApp } from "vue";
 import { createPinia } from "pinia";

@@ -5,12 +5,17 @@
 				<svg class="icon" aria-hidden="true">
 					<use xlink:href="#bookmark"></use>
 				</svg>
-				文件夹
+				<span>文件夹</span>
 			</span>
 			<div class="buttonNav">
 				<input type="file" id="upload" name="file" v-on:change="onFile" />
 				<label for="upload">
-					<span>上传</span>
+					<span class="brand">
+						<svg class="icon" aria-hidden="true">
+							<use xlink:href="#upload"></use>
+						</svg>
+						<p>上传</p>
+					</span>
 				</label>
 			</div>
 		</div>
@@ -29,7 +34,7 @@
 						<span class="size">{{ item.fileSize }}</span>
 					</div>
 					<div class="buttonNav">
-						<button @click="onDownload(item.id, item.fileName)">下载</button>
+						<button class="warn" @click="onDownload(item.id, item.fileName)">下载</button>
 						<button class="brand" @click="deleteFile(item.id)">删除</button>
 					</div>
 				</li>
