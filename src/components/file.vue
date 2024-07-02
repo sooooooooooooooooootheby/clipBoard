@@ -29,7 +29,8 @@
 						<span class="size">{{ item.fileSize }}</span>
 					</div>
 					<div class="buttonNav">
-						<a class="brand" :href="'/' + item.filePath" :download="item.fileName">下载</a>
+						<!-- <a class="brand" :href="'/' + item.filePath" :download="item.fileName">下载</a> -->
+						<button @click="onDownload(item.id, item.fileName)">下载</button>
 						<button class="brand" @click="deleteFile(item.id)">删除</button>
 					</div>
 				</li>
@@ -41,6 +42,7 @@
 <script>
 import { fileStore } from "@/stores/file.js";
 import autolog from "autolog.js";
+import axios from "axios";
 
 export default {
 	data() {
@@ -92,6 +94,32 @@ export default {
 			} catch (error) {
 				console.error(error);
 			}
+		},
+		// 下载文件
+		onDownload(id, filename) {
+			axios({
+				url: `http://47.100.101.113:8080/api/files/download/${id}`,
+				method: "get",
+				responseType: "blob",
+			})
+				.then((response) => {
+					// console.log(response.data);
+					let data = response.data;
+					if (!data) {
+						return console.log(1);
+					}
+					const url = window.URL.createObjectURL(new Blob([data]));
+					const link = document.createElement("a");
+					link.href = url;
+					link.setAttribute("download", filename);
+					document.body.appendChild(link);
+					link.click();
+					document.body.removeChild(link);
+					window.URL.revokeObjectURL(url);
+				})
+				.catch((error) => {
+					console.error("下载失败:", error);
+				});
 		},
 		// 格式化时间
 		handleTime(time) {
