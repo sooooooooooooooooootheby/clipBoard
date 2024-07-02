@@ -3,7 +3,7 @@
 		<div class="nav">
 			<span class="title">
 				<svg class="icon" aria-hidden="true">
-					<use xlink:href="#bookmark"></use>
+					<use xlink:href="#work"></use>
 				</svg>
 				<span>文件夹</span>
 			</span>
@@ -34,8 +34,18 @@
 						<span class="size">{{ item.fileSize }}</span>
 					</div>
 					<div class="buttonNav">
-						<button class="warn" @click="onDownload(item.id, item.fileName)">下载</button>
-						<button class="brand" @click="deleteFile(item.id)">删除</button>
+						<button class="brand" @click="onDownload(item.id, item.fileName)">
+							<svg class="icon" aria-hidden="true">
+								<use xlink:href="#download"></use>
+							</svg>
+							<span>下载</span>
+						</button>
+						<button class="warn" @click="deleteFile(item.id)">
+							<svg class="icon" aria-hidden="true">
+								<use xlink:href="#delete"></use>
+							</svg>
+							<span>删除</span>
+						</button>
 					</div>
 				</li>
 			</ul>
